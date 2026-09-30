@@ -1,286 +1,409 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guibin Fang | BAIT at Rutgers University</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        rutgers: '#CC0033',
-                        rutgersDark: '#990026',
-                    }
-                }
+
+    <title>Guibin Fang | Business Analytics & IT</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background-color: #f5f7fa;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1f3c88;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 25px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #1f5fbf;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 8%;
+            background: linear-gradient(135deg, #eef4ff, #ffffff);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: #172b4d;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: #1f5fbf;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 650px;
+        }
+
+        .linkedin-button {
+            display: inline-block;
+            background-color: #0a66c2;
+            color: white;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .linkedin-button:hover {
+            background-color: #004182;
+            transform: translateY(-2px);
+        }
+
+        /* Headshot */
+        .headshot-container {
+            flex-shrink: 0;
+        }
+
+        .headshot {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 7px solid white;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* General Sections */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #172b4d;
+            margin-bottom: 40px;
+        }
+
+        /* About */
+        .about {
+            background-color: white;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Education */
+        .education {
+            background-color: #f5f7fa;
+        }
+
+        .education-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            text-align: center;
+        }
+
+        .education-card h3 {
+            color: #1f5fbf;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            color: #555;
+        }
+
+        /* Skills */
+        .skills {
+            background-color: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            padding: 25px 15px;
+            text-align: center;
+            background-color: #f5f7fa;
+            border-radius: 10px;
+            border: 1px solid #e1e5eb;
+            transition: 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border-color: #1f5fbf;
+        }
+
+        .skill-card h3 {
+            color: #172b4d;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #172b4d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 12px;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 50px 6%;
+            }
+
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .headshot {
+                width: 220px;
+                height: 220px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 60px 6%;
             }
         }
-    </script>
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(229, 231, 235, 0.8);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #1e293b 0%, #CC0033 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        @media (max-width: 450px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            nav a {
+                margin-left: 8px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-rutgers selection:text-white">
 
-    <nav class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-slate-200/80">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-tight text-slate-900 hover:text-rutgers transition-colors">
-                GF<span class="text-rutgers">.</span>
-            </a>
-            
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-                <a href="#about" class="text-slate-600 hover:text-rutgers transition-colors">About</a>
-                <a href="#skills" class="text-slate-600 hover:text-rutgers transition-colors">Skills</a>
-                <a href="#projects" class="text-slate-600 hover:text-rutgers transition-colors">Projects</a>
-                <a href="#contact" class="text-slate-600 hover:text-rutgers transition-colors">Contact</a>
-            </div>
+<body>
 
-            <!-- Header LinkedIn Button -->
-            <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" 
-               class="inline-flex items-center gap-2 bg-slate-900 text-white hover:bg-rutgers px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-300 shadow-sm hover:shadow-md">
-                <i class="fab font-normal fa-linkedin text-base"></i>
-                <span>Connect on LinkedIn</span>
-            </a>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-name">Guibin Fang</div>
+
+        <div>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
         </div>
     </nav>
 
-    <section class="pt-36 pb-20 md:pt-48 md:pb-32 max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-12 gap-12 items-center">
-            <div class="md:col-span-8 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 text-rutgers border border-red-100 text-xs font-semibold uppercase tracking-wider">
-                    <i class="fas font-normal fa-graduation-cap"></i> Rutgers University Student
-                </div>
-                
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                    Hi, I'm <span class="gradient-text">Guibin Fang</span>
-                </h1>
-                
-                <p class="text-xl md:text-2xl text-slate-600 font-medium">
-                    Business Analytics & Information Technology (BAIT) Major
-                </p>
-                
-                <p class="text-slate-600 max-w-2xl leading-relaxed text-base md:text-lg">
-                    I'm Guibin Fang, a sophomore undergraduate student at RBS. I'm passionate to learn how to bridge the gap between data-driven insights and strategic business decisions through my curriculum at Rutgers. My goal is to become a Supply Chain Manager with a background in data analytics.
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+
+            <div class="hero-text">
+                <h1>Guibin Fang</h1>
+
+                <h2>
+                    Business Analytics & Information Technology
+                </h2>
+
+                <p>
+                    Sophomore undergraduate student at Rutgers Business School
+                    passionate about using data-driven insights to solve
+                    business problems and make strategic decisions.
                 </p>
 
-                <!-- Primary Call to Action Buttons -->
-                <div class="pt-4 flex flex-wrap gap-4 items-center">
-                    <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" 
-                       class="inline-flex items-center gap-3 bg-[#0A66C2] hover:bg-[#084e96] text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-0.5">
-                        <i class="fab fa-linkedin text-xl"></i>
-                        <span>Visit My LinkedIn Profile</span>
-                        <i class="fas fa-arrow-right text-xs opacity-70"></i>
-                    </a>
-
-                    <a href="#projects" 
-                       class="inline-flex items-center gap-2 bg-white text-slate-700 hover:text-slate-900 border border-slate-200 hover:border-slate-300 px-6 py-3.5 rounded-xl font-semibold shadow-sm transition-all duration-300">
-                        <span>View Projects</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Visual Badge/Card -->
-            <div class="md:col-span-4">
-                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-xl shadow-slate-200/50 space-y-6">
-                    <div class="flex items-center gap-4 border-b border-slate-100 pb-4">
-                        <div class="w-12 h-12 rounded-xl bg-rutgers/10 text-rutgers flex items-center justify-center font-bold text-xl">
-                            R
-                        </div>
-                        <div>
-                            <h2 class="font-bold text-slate-900">Rutgers Business School</h2>
-                            <p class="text-xs text-slate-500">New Brunswick, NJ</p>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between text-slate-600">
-                            <span>Focus:</span>
-                            <span class="font-semibold text-slate-800">Data Analytics & Tech</span>
-                        </div>
-                        <div class="flex justify-between text-slate-600">
-                            <span>Degree:</span>
-                            <span class="font-semibold text-slate-800">B.S. in BAIT</span>
-                        </div>
-                        <div class="flex justify-between text-slate-600">
-                            <span>Status:</span>
-                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-50 text-emerald-700">
-                                Active Student
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 bg-white border-y border-slate-200/60">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="max-w-3xl">
-                <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-6">About Me</h2>
-                <div class="space-y-4 text-slate-600 leading-relaxed text-lg">
-                    <p>
-                        I am currently pursuing a degree in <strong>Business Analytics and Information Technology (BAIT)</strong> at <strong>Rutgers University</strong>. My academic journey blends business strategy with technical expertise, enabling me to extract actionable intelligence from complex datasets.
-                    </p>
-                    <p>
-                        I enjoy tackling data-centric challenges, building analytical models, and leveraging modern software tools to optimize operational workflows. My goal is to work at the intersection of data engineering, business analysis, and technology consultancy.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="py-20 max-w-6xl mx-auto px-6">
-        <div class="mb-12">
-            <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-3">Skills & Expertise</h2>
-            <p class="text-slate-600">Technologies and methodologies I work with regularly.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Skill Category 1 -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
-                    <i class="fas fa-chart-line text-lg"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-3">Data Analytics</h3>
-                <ul class="space-y-2 text-sm text-slate-600">
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Statistical Modeling</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Exploratory Data Analysis</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Predictive Analytics</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Business Metrics & KPIs</li>
-                </ul>
-            </div>
-
-            <!-- Skill Category 2 -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
-                    <i class="fas fa-code text-lg"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-3">Programming & Databases</h3>
-                <ul class="space-y-2 text-sm text-slate-600">
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Python (Pandas, NumPy)</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> SQL & Database Management</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> R for Data Analysis</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Git & GitHub</li>
-                </ul>
-            </div>
-
-            <!-- Skill Category 3 -->
-            <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-                <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
-                    <i class="fas fa-desktop text-lg"></i>
-                </div>
-                <h3 class="text-lg font-bold text-slate-900 mb-3">BI & Visualization</h3>
-                <ul class="space-y-2 text-sm text-slate-600">
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Tableau / Power BI</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Advanced Excel & Modeling</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Data Storytelling</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-500 text-xs"></i> Information Systems</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-20 bg-white border-t border-slate-200/60">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-                <div>
-                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-3">Academic & Personal Projects</h2>
-                    <p class="text-slate-600">Highlighted analytical and technology projects.</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project Card 1 -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 hover:border-slate-300 transition-all">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Data Analysis</span>
-                        <a href="https://github.com" target="_blank" class="text-slate-400 hover:text-slate-700 transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Predictive Business Modeling</h3>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">
-                        Analyzed large-scale consumer datasets using Python to predict buying behavior, achieving key insights for inventory optimization and target marketing.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600">Python</span>
-                        <span class="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600">Pandas</span>
-                        <span class="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600">Scikit-Learn</span>
-                    </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 hover:border-slate-300 transition-all">
-                    <div class="flex justify-between items-start mb-4">
-                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">Business Intelligence</span>
-                        <a href="https://github.com" target="_blank" class="text-slate-400 hover:text-slate-700 transition-colors">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Executive KPI Dashboard</h3>
-                    <p class="text-slate-600 text-sm mb-4 leading-relaxed">
-                        Created an interactive dashboard displaying quarterly performance, revenue trends, and operational metrics using SQL data extraction and Tableau visualization.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600">SQL</span>
-                        <span class="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600">Tableau</span>
-                        <span class="px-2.5 py-1 bg-white border border-slate-200 rounded-md text-xs font-medium text-slate-600">ETL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
-            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Let's Connect & Collaborate</h2>
-            <p class="text-slate-300 text-lg max-w-2xl mx-auto">
-                I am actively seeking internship and career opportunities in business analytics, data analytics, and consulting.
-            </p>
-            
-            <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center justify-center gap-3 bg-[#0A66C2] hover:bg-[#084e96] text-white px-8 py-4 rounded-xl font-semibold shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                    <span>Connect on LinkedIn</span>
+                <a
+                    class="linkedin-button"
+                    href="https://www.linkedin.com/in/guibin-fang0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Connect with me on LinkedIn
                 </a>
             </div>
+
+            <div class="headshot-container">
+                <img
+                    src="image.png"
+                    alt="Headshot of Guibin Fang"
+                    class="headshot"
+                >
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+
+            <h2 class="section-title">About Me</h2>
+
+            <p class="about-text">
+                Hi, I'm Guibin Fang, a sophomore undergraduate student at RBS.
+                I'm passionate to learn how to bridge the gap between
+                data-driven insights and strategic business decisions through
+                my curriculum at Rutgers. My goal is to become a Supply Chain
+                Manager with a background in data analytics.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="section-container">
+
+            <h2 class="section-title">Education</h2>
+
+            <div class="education-card">
+                <h3>Rutgers University</h3>
+
+                <p>
+                    Rutgers Business School
+                </p>
+
+                <p>
+                    Major: Business Analytics and Information Technology (BAIT)
+                </p>
+
+                <p>
+                    Undergraduate Student · Sophomore
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="section-container">
+
+            <h2 class="section-title">Skills</h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <h3>Bynder</h3>
+                    <p>Digital Asset Management</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>VS Code</h3>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Java</h3>
+                    <p>Basic</p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Python</h3>
+                    <p>Basic</p>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-500 py-8 text-center text-sm border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>© <span id="year"></span> Guibin Fang. Rutgers BAIT.</p>
-            <div class="flex space-x-6 text-lg">
-                <a href="https://www.linkedin.com" target="_blank" class="hover:text-white transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com" target="_blank" class="hover:text-white transition-colors" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
+    <footer>
+        <p>© 2026 Guibin Fang. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
